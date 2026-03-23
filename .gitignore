@@ -1,0 +1,11 @@
+# Source files (reference only)
+source_woman.html
+source_couple.html
+
+# OS
+Thumbs.db
+.DS_Store
+
+# IDE
+.vscode/
+.idea/

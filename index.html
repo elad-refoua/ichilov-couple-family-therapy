@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="he-IL" dir="rtl" class="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>המרפאה לטיפול זוגי-משפחתי | פסיכיאטריה | איכילוב</title>
+    <link rel="icon" type="image/x-icon" href="https://www.tasmc.org.il/images/favicons/ichilov.ico" />
+
+    <!-- Ichilov base CSS -->
+    <link href="https://www.tasmc.org.il/sb/base-css.css.v639093439562026835" rel="stylesheet">
+
+    <!-- Ichilov fonts -->
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="https://www.tasmc.org.il/fonts/mikhmoret-bold-aaa.woff2">
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="https://www.tasmc.org.il/fonts/mikhmoret-regular-aaa.woff2">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" crossorigin href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kufam:ital,wght@0,700;1,400&family=Noto+Sans+Arabic:wght@300;400;700&family=Noto+Sans+Display:wght@300;400;700&family=Noto+Sans+Hebrew:wght@300;400;700&family=Sofia+Sans+Extra+Condensed:wght@1..1000&display=swap">
+
+    <style>
+        /* Mockup badge */
+        .mockup-badge {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            background: #e74c3c;
+            color: white;
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 700;
+            z-index: 99999;
+            box-shadow: 0 3px 15px rgba(231,76,60,0.4);
+            font-family: 'Noto Sans Hebrew', sans-serif;
+        }
+        /* Fix fonts path for external loading */
+        @font-face {
+            font-family: 'mikhmoret';
+            src: url('https://www.tasmc.org.il/fonts/mikhmoret-regular-aaa.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'mikhmoret';
+            src: url('https://www.tasmc.org.il/fonts/mikhmoret-bold-aaa.woff2') format('woff2');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+        /* Fix icon fonts path */
+        .icon-location::before,
+        .icon-reception::before,
+        .icon-phone::before,
+        .icon-contact::before,
+        .icon-fax::before {
+            font-family: 'ichilov-icons', sans-serif;
+        }
+        /* Ensure images from local sources display */
+        .departmentHead .item picture img {
+            object-fit: cover;
+        }
+        /* Placeholder for hero banner */
+        .hero-placeholder {
+            width: 100%;
+            height: 520px;
+            background: linear-gradient(135deg, #0d4f5c 0%, #1a7a8a 50%, #2b96a8 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400"><circle cx="300" cy="200" r="120" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="2"/><circle cx="500" cy="200" r="120" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="2"/><path d="M400 130 C400 100,370 100,370 130 C370 155,400 180,400 180 C400 180,430 155,430 130 C430 100,400 100,400 130Z" fill="rgba(255,255,255,0.08)"/></svg>') center/contain no-repeat;
+        }
+        .hero-placeholder-text {
+            text-align: center;
+            color: white;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-placeholder-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        /* Note boxes for incomplete items */
+        .to-complete {
+            background: #fff8e1;
+            border: 1px dashed #e8a838;
+            border-radius: 8px;
+            padding: 10px 16px;
+            margin: 10px 0;
+            font-size: 13px;
+            color: #996b13;
+        }
+        /* Team member placeholder avatars */
+        .team-avatar-placeholder {
+            width: 100%;
+            aspect-ratio: 3/4;
+            background: linear-gradient(135deg, #d1e8eb, #a8d5db);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: #0d5e6b;
+            font-weight: 700;
+        }
+        /* Process section styling */
+        .process-section {
+            background: #f8f9fa;
+            padding: 40px 0;
+        }
+        .process-steps {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .process-step {
+            flex: 1;
+            min-width: 250px;
+            max-width: 320px;
+            text-align: center;
+            padding: 30px 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            position: relative;
+        }
+        .process-step .step-num {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #0d5e6b;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin: 0 auto 15px;
+        }
+        .process-step h4 {
+            color: #0d5e6b;
+            margin-bottom: 10px;
+        }
+        .process-step p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.7;
+        }
+        .mirror-box {
+            background: linear-gradient(135deg, #0d4f5c, #1a7a8a);
+            color: white;
+            border-radius: 12px;
+            padding: 25px 30px;
+            margin-top: 30px;
+        }
+        .mirror-box h4 {
+            margin-bottom: 10px;
+        }
+        .mirror-box p {
+            opacity: 0.9;
+            line-height: 1.8;
+            font-size: 14px;
+        }
+        /* Director photo */
+        .director-photo-wrapper {
+            max-width: 280px;
+        }
+        .director-photo-wrapper img {
+            width: 100%;
+            border-radius: 8px;
+        }
+        /* Override any broken icon fonts with emoji fallbacks */
+        #dep-location i.icon-location::before { content: '📍'; font-family: initial; }
+        #dep-reception i.icon-reception::before { content: '🕐'; font-family: initial; }
+        #dep-phone i.icon-phone::before { content: '📞'; font-family: initial; }
+        #dep-contact i.icon-contact::before { content: '📧'; font-family: initial; }
+    </style>
+</head>
+<body>
+    <!-- MOCKUP BADGE -->
+    <div class="mockup-badge">MOCKUP — טיוטה לדיון</div>
+
+    <ul class="skipMenu noPrint" aria-label="ניווט נגיש" role="list" data-elastic-exclude>
+        <li><a href="#main" title="דלג לתוכן העמוד">דלג לתוכן העמוד</a></li>
+    </ul>
+
+    <!-- HEADER -->
+    <header id="header" class="sticky-top" data-elastic-exclude>
+        <nav class="navbar navbar-expand-xl" aria-label="ניווט ראשי">
+            <div class="container">
+                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="ניווט">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="navbar-brand">
+                    <a href="https://www.tasmc.org.il/" aria-label="לוגו המרכז הרפואי תל-אביב">
+                        <img class="logoMainBig" src="https://www.tasmc.org.il/media/gctjln41/logo-landscape-hb.svg" alt="איכילוב" width="149" height="40">
+                        <img class="logoMainSmall" src="https://www.tasmc.org.il/media/zx2peiup/logo-ichilov-dark.svg" alt="" width="32" height="32">
+                    </a>
+                </div>
+
+                <div class="collapse navbar-collapse supported-content-menu" id="navbarSupportedContent">
+                    <ul class="divisionsList">
+                        <li><a href="https://www.tasmc.org.il/" class="active"><img loading="lazy" src="https://www.tasmc.org.il/media/zx2peiup/logo-ichilov-dark.svg" alt=""> איכילוב</a></li>
+                        <li><a href="https://www.tasmc.org.il/lis/"><img loading="lazy" src="https://www.tasmc.org.il/media/ixfi4u3x/lis_n.png" alt=""> ליס</a></li>
+                        <li><a href="https://www.tasmc.org.il/dana-dwek/"><img loading="lazy" src="https://www.tasmc.org.il/media/anxhsxsl/dana.png" alt=""> דנה-דואק</a></li>
+                        <li><a href="https://www.tasmc.org.il/rehabilitation/"><img loading="lazy" src="https://www.tasmc.org.il/media/neleebe1/shikum.png" alt=""> שיקום</a></li>
+                        <li><a href="https://www.tasmc.org.il/bewell/"><img loading="lazy" src="https://www.tasmc.org.il/media/sczjzkyo/bewell.png" alt=""> Be-Well</a></li>
+                    </ul>
+
+                    <ul id="main-menu" class="sm sm-clean sm-rtl" data-elastic-exclude>
+                        <li><a href="https://www.tasmc.org.il/odotl/">על המרכז</a></li>
+                        <li><a href="https://www.tasmc.org.il/unit-index-page/">מחלקות ומרפאות</a></li>
+                        <li><a href="https://www.tasmc.org.il/info/">מידע שירותי</a></li>
+                        <li><a href="https://www.tasmc.org.il/doctorssearch/">חיפוש רופא/ה</a></li>
+                        <li><a href="https://www.tasmc.org.il/madade-briut/">מדדי בריאות</a></li>
+                        <li><a href="https://www.tasmc.org.il/media-page/">מדיה</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- MAIN -->
+    <main id="main">
+        <!-- HERO BANNER -->
+        <section class="departmentHead">
+            <div class="container">
+                <div class="item">
+                    <picture class="inner-banner-picture">
+                        <img class="w-100 d-block img-fluid" src="hero-banner.jpg" alt="היחידה לטיפול זוגי ומשפחתי" style="max-height:520px;object-fit:cover;">
+                    </picture>
+                    <div class="item-caption">
+                        <h1>היחידה לטיפול זוגי ומשפחתי</h1>
+                        <div class="subtext">
+                            המכון לבריאות הנפש | המרכז הרפואי תל-אביב
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BREADCRUMB -->
+        <div class="container breadcrumb-container">
+            <nav aria-label="פרורי לחם">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="https://www.tasmc.org.il/">איכילוב</a></li>
+                    <li class="breadcrumb-item"><a href="https://www.tasmc.org.il/unit-index-page/">יחידות</a></li>
+                    <li class="breadcrumb-item"><a href="https://www.tasmc.org.il/unit-index-page/psychiatr/">פסיכיאטריה - מערך</a></li>
+                    <li class="breadcrumb-item"><a href="https://www.tasmc.org.il/unit-index-page/psychiatr/psychiatry-clinic/">המכון לבריאות הנפש</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><span>היחידה לטיפול זוגי ומשפחתי</span></li>
+                </ol>
+            </nav>
+        </div>
+
+        <!-- CONTENT -->
+        <section class="department">
+            <div class="container">
+                <div class="row row-twoCol-wide pb-0">
+                    <article>
+                        <div class="umb-block-list">
+
+<!-- ========== מי אנחנו ========== -->
+<h3>מי אנחנו?</h3>
+<p>היחידה לטיפול זוגי ומשפחתי במכון לבריאות הנפש שבמרכז הרפואי תל-אביב (איכילוב), מספקת מענה מקצועי ומעמיק לזוגות ולמשפחות המבקשים סיוע.</p>
+
+<p><strong>הגישה שלנו היא פסיכודינמית</strong> — אנו רואים את הזוגיות כיחידה שלמה ואת המשפחה כמערכת חיה. אנחנו לא מטפלים בסימפטומים בלבד, אלא צוללים אל תוך העומק של הקשר — מזהים את הדפוסים הנסתרים, את הרגשות שמתחבאים מתחת לפני השטח, את הצרכים שלא נאמרים. ומתוך ההבנה הזו, אנו מעניקים כלים מעשיים וקונקרטיים ליצירת שינוי אמיתי בחיי היומיום.</p>
+
+<p>המרפאה הוקמה על-מנת לסייע לזוגות שמרגישים שהקשר שלהם נקלע למשבר, ולמשפחות המתמודדות עם קשיים בתפקוד ובתקשורת. במרפאה צוות מנוסה ומוסמך בטיפולים זוגיים ומשפחתיים, שמלווה את המטופלים ליצירת מסלול תקשורת משותף במרחב מוגן, ניטרלי ומאפשר.</p>
+
+<br>
+
+<!-- ========== השירותים שלנו ========== -->
+<h2 class="h3 lineTitle">תחומי הטיפול</h2>
+<div class="medicalDepartmentsList row row-cols-1 row-cols-lg-3">
+    <div class="col-md-6 col-lg-6">
+        <a href="javascript:void(0)" class="item" style="" onclick="document.getElementById('couple-detail').style.display=document.getElementById('couple-detail').style.display==='none'?'block':'none'">
+            <span class="content">
+                <h3>טיפול זוגי — הזוגיות במוקד</h3>
+                <span class="text">הטיפול הזוגי שלנו שם את הקשר הזוגי כיחידה במרכז התהליך. בגישה פסיכודינמית אנו חושפים את הרגשות העמוקים שמניעים את הדינמיקה בין בני הזוג, ומתוך ההבנה מעניקים כלים מעשיים לתקשורת, חיבור וקרבה מחודשת.</span>
+                <span class="fakeLink">לחצו למידע נוסף</span>
+            </span>
+        </a>
+    </div>
+    <div class="col-md-6 col-lg-6">
+        <a href="javascript:void(0)" class="item" style="" onclick="document.getElementById('family-detail').style.display=document.getElementById('family-detail').style.display==='none'?'block':'none'">
+            <span class="content">
+                <h3>טיפול משפחתי — ראייה מערכתית</h3>
+                <span class="text">הטיפול המשפחתי מתבסס על ראייה מערכתית — המשפחה כיחידה אחת שבה כל אחד מבני המשפחה משפיע ומושפע מהמערכת כולה. אנו מזהים דפוסים שאינם מיטיבים ומסייעים למשפחה לפתח דרכים חדשות ובריאות יותר להתייחס אחד לשני.</span>
+                <span class="fakeLink">לחצו למידע נוסף</span>
+            </span>
+        </a>
+    </div>
+</div>
+
+<!-- Expandable Couple Therapy Details -->
+<div id="couple-detail" style="display:none; background:#f0f7f8; border-radius:8px; padding:25px; margin:20px 0; border-right: 4px solid #0d5e6b;">
+    <h4 style="color:#0d5e6b; margin-bottom:15px;">טיפול זוגי — הזוגיות במוקד</h4>
+    <p>בטיפול הזוגי אנו רואים את הזוגיות כיחידה חיה. הגישה הפסיכודינמית שלנו מאפשרת לנו לחשוף את השכבות העמוקות של הקשר — את הצרכים הלא מדוברים, את הפחדים שמניעים את הויכוחים, ואת הרגשות שמתחבאים מתחת למילים.</p>
+    <p><strong>למי מתאים הטיפול?</strong></p>
+    <ul style="list-style-type: disc; padding-right: 20px;">
+        <li>זוגות שחווים משבר בקשר — ריחוק, כעסים חוזרים, תחושת זרות</li>
+        <li>זוגות שמתקשים לתקשר ולהבין אחד את השני</li>
+        <li>זוגות שמתלבטים לגבי עתיד הקשר</li>
+        <li>זוגות שעוברים אירוע טראומטי או שינוי משמעותי בחיים</li>
+        <li>זוגות שרוצים לחזק ולהעמיק את הקשר ביניהם</li>
+    </ul>
+    <p><strong>מה כולל התהליך?</strong></p>
+    <p>פגישת אינטייק (הערכה) מעבר למראה חד-כיוונית, ולאחריה התאמה למטפל/ת מוסמך/ת מהצוות. הטיפול מתקיים בפגישות שבועיות קבועות במרחב מוגן וסודי.</p>
+</div>
+
+<!-- Expandable Family Therapy Details -->
+<div id="family-detail" style="display:none; background:#faf5f0; border-radius:8px; padding:25px; margin:20px 0; border-right: 4px solid #c0724a;">
+    <h4 style="color:#8b4513; margin-bottom:15px;">טיפול משפחתי — ראייה מערכתית</h4>
+    <p>בטיפול המשפחתי אנו מתבוננים על המשפחה כמערכת שלמה. הגישה המערכתית-פסיכודינמית מאפשרת לנו להבין כיצד כל בן משפחה משפיע ומושפע מהדינמיקה המשפחתית, ולזהות דפוסי תקשורת ואינטראקציה שאינם מיטיבים.</p>
+    <p><strong>למי מתאים הטיפול?</strong></p>
+    <ul style="list-style-type: disc; padding-right: 20px;">
+        <li>משפחות עם קונפליקטים חוזרים או קשיים בתפקוד</li>
+        <li>משפחות המתמודדות עם מחלה נפשית של בן משפחה</li>
+        <li>משברים משפחתיים — גירושין, אבל, שינויים משמעותיים</li>
+        <li>קשיי תקשורת בין הורים לילדים או בין דורות</li>
+        <li>משפחות שרוצות לשפר את התפקוד המשפחתי ולחזק את הקשרים</li>
+    </ul>
+    <p><strong>מה כולל התהליך?</strong></p>
+    <p>פגישת אינטייק (הערכה) מעבר למראה חד-כיוונית שבה כל המשפחה משתתפת, ולאחריה התאמה למטפל/ת מתאים/ה. הטיפול מתקיים בפגישות קבועות עם כלל המשפחה או חלקה, בהתאם לצורך.</p>
+</div>
+
+<br>
+
+<!-- ========== תהליך ההפנייה ========== -->
+<h2 class="h3 lineTitle">תהליך ההפנייה והטיפול</h2>
+
+<div class="process-steps">
+    <div class="process-step">
+        <div class="step-num">1</div>
+        <h4>הפנייה</h4>
+        <p>פנייה טלפונית למזכירות המכון לבריאות הנפש ובקשה לקביעת ראיון קבלה ביחידה לטיפול זוגי או משפחתי. נדרש טופס 17 מקופת החולים או תשלום פרטי.</p>
+    </div>
+    <div class="process-step">
+        <div class="step-num">2</div>
+        <h4>אינטייק מעבר למראה</h4>
+        <p>פגישת הערכה ראשונית שנערכת מאחורי מראה חד-כיוונית (One-Way Mirror). צוות מומחים צופה ומנתח את הדינמיקה הזוגית או המשפחתית כדי להבין לעומק את הצרכים.</p>
+    </div>
+    <div class="process-step">
+        <div class="step-num">3</div>
+        <h4>התאמה למטפל/ת</h4>
+        <p>על בסיס ההערכה המעמיקה, מתבצעת התאמה מדויקת למטפל/ת מהצוות האיכותי שלנו — בעל/ת התמחות וניסיון רלוונטיים לסוגיה הספציפית שלכם.</p>
+    </div>
+</div>
+
+<div class="mirror-box">
+    <h4>🪞 מה זה אינטייק מעבר למראה?</h4>
+    <p>מדובר בשיטת הערכה ייחודית ומקצועית, בה פגישת ההיכרות מתנהלת בחדר עם מראה חד-כיוונית. מאחורי המראה יושב צוות מומחים שצופה בפגישה בזמן אמת. השיטה מאפשרת הערכה מקיפה ועמוקה יותר של הדינמיקה הזוגית או המשפחתית, ומבטיחה שההמלצה הטיפולית מבוססת על ניתוח מקצועי רחב. הצוות והזוג/המשפחה נפגשים יחד לסיכום הפגישה.</p>
+</div>
+
+<br>
+
+<!-- ========== ראש היחידה ========== -->
+<div class="departmentTeamWrapper">
+    <h2 class="h3 lineTitle">ראש היחידה</h2>
+    <ul class="departmentTeam row row-cols-2 row-cols-lg-4">
+        <li>
+            <div class="item">
+                <figure>
+                    <img loading="lazy" src="516928562_25164696416450607_267340405774454275_n.jpg" alt="נדין ג'קסון" style="width:100%;" />
+                </figure>
+                <div class="content">
+                    <h3 class="name">נדין ג'קסון</h3>
+                    <div class="title">עו"ס קלינית מדריכה | מטפלת זוגית ומשפחתית מוסמכת | ראש היחידה לטיפול זוגי ומשפחתי</div>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <blockquote style="border-right: 3px solid #0d5e6b; padding-right: 15px; margin: 20px 0; color: #555; font-style: italic;">
+        "אני יושבת, ותפקידי לשאול: מה קורה לכם? למה אתם רבים ככה? אתם שניכם אומללים. ואז מגיעות התשובות האמיתיות — ואלו רק חלק מהתחושות שמבעבעות בקשר הזוגי ומחפשות פתח יציאה לבירור ולטיפול. וזה מה שאנו עושים כאן."
+    </blockquote>
+    <div class="to-complete">
+        ⚠️ <strong>להשלמה:</strong> פרטים נוספים על ההכשרות, ההתמחויות והניסיון המקצועי של נדין ג'קסון
+    </div>
+</div>
+
+<br>
+
+<!-- ========== הצוות ========== -->
+<div class="departmentTeamWrapper">
+    <h2 class="h3 lineTitle">הצוות המקצועי</h2>
+    <p>הצוות הטיפולי רב-מקצועי ומורכב מאנשי מקצוע מוסמכים בעלי ניסיון וותק בטיפול זוגי ומשפחתי. אנשי הצוות בעלי הסמכות מקצועיות, מעבירים הרצאות ומשתתפים בפעילות אקדמית ומקצועית.</p>
+
+    <ul style="list-style-type: square;">
+        <li>נדין ג'קסון – עו"ס קלינית מדריכה, מטפלת זוגית ומשפחתית מוסמכת, ראש היחידה</li>
+        <li>אפרת שחר-צור – עו"ס קלינית</li>
+        <li>נאוה נאי – עו"ס קלינית</li>
+        <li>נועה ארסט – עו"ס קלינית</li>
+        <li>בר טנא – עו"ס</li>
+        <li>עדי <span style="color:#996b13;">[שם משפחה להשלמה]</span> – עו"ס קלינית</li>
+        <li>רויטל מורביץ – עו"ס קלינית</li>
+        <li>יסמין <span style="color:#996b13;">[שם משפחה להשלמה]</span> – פסיכולוגית, מטפלת זוגית</li>
+        <li>אלעד רפואה – פסיכולוג בהתמחות קלינית</li>
+        <li style="color:#996b13;"><em>[שמות נוספים של חברי צוות להשלמה — הרשימה חלקית]</em></li>
+    </ul>
+
+    <div class="to-complete">
+        ⚠️ <strong>להשלמה:</strong> רשימת הצוות חלקית — יש להוסיף שמות נוספים, שמות משפחה חסרים (עדי, יסמין), תפקידים מדויקים ותיאורי התמחות, ותמונות צוות
+    </div>
+</div>
+
+<br>
+
+<!-- ========== קריאה לפעולה ========== -->
+<div class="marketingBox">
+    <div class="marketing-content">
+        <h2 class="h4">הקשר שלכם שווה את המאמץ</h2>
+        <div class="text">
+            לפעמים הצעד הכי אמיץ הוא להודות שצריך עזרה. אם אתם מרגישים שקשר הזוגיות שלכם נקלע למשבר, שאתם מתרחקים, או שהמשפחה שלכם זקוקה לכיוון חדש — אתם לא לבד. פנו אלינו, ונלווה אתכם בדרך לשינוי.
+            <br><br>
+            <strong>התקשרו למזכירות המכון לבריאות הנפש</strong> ובקשו לזמן תור ליחידה לטיפול זוגי/משפחתי.
+        </div>
+    </div>
+    <a class="btn btn-ichilov" href="tel:036974707" title="התקשרו אלינו">התקשרו: 03-6974707</a>
+</div>
+
+                        </div>
+                    </article>
+
+                    <!-- ========== SIDEBAR ========== -->
+                    <aside>
+                        <div class="departmentInfo">
+                            <div class="departmentInfo-item" id="dep-location">
+                                <a style="text-decoration:none">
+                                    <i class="icon-location" aria-label="מיקום המחלקה"></i>
+                                    <p><strong>בניין השיקום</strong></p>
+                                    <p>קומת קרקע, המרכז הרפואי תל-אביב</p>
+                                </a>
+                            </div>
+                            <div class="departmentInfo-item" id="dep-reception">
+                                <i class="icon-reception" aria-label="קבלת קהל למחלקה"></i>
+                                <p><strong>מידע נוסף</strong></p>
+                                מענה טלפוני בין 09:00-13:00
+                            </div>
+                            <div class="departmentInfo-item" id="dep-phone">
+                                <i class="icon-phone" aria-label="טלפוני המחלקה"></i>
+                                <p>
+                                    <strong>טלפון מזכירות המכון</strong> <br>
+                                    <a href="tel:03-6974707">03-6974707</a>
+                                    <br>מענה טלפוני בין 09:00-13:00
+                                </p>
+                                <p>
+                                    <strong>פקס</strong> <br>
+                                    03-6974586
+                                </p>
+                            </div>
+                        </div>
+                        <ul class="departmentInfoList">
+                            <li><button data-part="dep-location" class="icon-location" type="button" aria-label="הצג מיקום"><i></i> מיקום</button></li>
+                            <li><button data-part="dep-reception" class="icon-reception" type="button" aria-label="הצג זמני קבלה"><i></i> קבלת קהל</button></li>
+                            <li><button data-part="dep-phone" class="icon-phone" type="button" aria-label="הצג טלפון"><i></i> טלפונים</button></li>
+                        </ul>
+                    </aside>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center" style="padding: 30px 0; color: #888; font-size: 13px;">
+                    <p>© 2026 המרכז הרפואי תל-אביב ע"ש סוראסקי (איכילוב) | היחידה לטיפול זוגי ומשפחתי | המכון לבריאות הנפש</p>
+                    <p style="margin-top:10px;">
+                        <a href="https://www.tasmc.org.il" style="color:#0d5e6b;">אתר איכילוב</a> |
+                        <a href="https://www.tasmc.org.il/unit-index-page/psychiatr/" style="color:#0d5e6b;">מערך הפסיכיאטריה</a> |
+                        <a href="https://www.tasmc.org.il/unit-index-page/psychiatr/psychiatry-clinic/" style="color:#0d5e6b;">המכון לבריאות הנפש</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
