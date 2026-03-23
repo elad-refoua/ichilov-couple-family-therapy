@@ -175,6 +175,33 @@
             width: 100%;
             border-radius: 8px;
         }
+        /* Service cards: side by side, tight */
+        .medicalDepartmentsList {
+            display: flex !important;
+            flex-wrap: nowrap !important;
+            gap: 10px !important;
+            padding: 0 !important;
+        }
+        .medicalDepartmentsList > div {
+            flex: 1 !important;
+            max-width: 50% !important;
+            width: 50% !important;
+            padding: 0 5px !important;
+        }
+        .medicalDepartmentsList .item {
+            height: 100%;
+        }
+        .medicalDepartmentsList .item .content {
+            padding: 15px !important;
+        }
+        .medicalDepartmentsList .item .content h3 {
+            font-size: 1.2rem !important;
+            margin-bottom: 8px !important;
+        }
+        .medicalDepartmentsList .item .content .text {
+            font-size: 14px !important;
+            line-height: 1.6 !important;
+        }
         /* Override any broken icon fonts with emoji fallbacks */
         #dep-location i.icon-location::before { content: '📍'; font-family: initial; }
         #dep-reception i.icon-reception::before { content: '🕐'; font-family: initial; }
